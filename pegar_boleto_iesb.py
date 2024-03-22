@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
-# Inicializa o WebDriver (substitua 'chromedriver' pelo nome do seu WebDriver)
+# Inicializa o WebDriver
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
@@ -17,7 +17,7 @@ driver.get('https://aluno.iesb.br/aluno/#/login')
 matricula = input("Matricula: ")
 senha = input("Senha: ")
 
-# Encontra o elemento que contém o título (por exemplo, o elemento <h1>)
+# Encontra os elementos de Login(Username e Password)
 username = driver.find_element(By.XPATH, "/html/body/ion-nav-view/div/div/div[2]/div/form/div/label[1]/input")
 password = driver.find_element(By.XPATH, "/html/body/ion-nav-view/div/div/div[2]/div/form/div/label[2]/input")
 
@@ -34,6 +34,7 @@ WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, "/ht
 # Aperta no botão "Boletos"
 driver.find_element(By.XPATH,"/html/body/ion-nav-view/ion-side-menus/div/ion-side-menu/menu-left/ion-content/div[1]/ion-list/div/div[4]/div/ion-item[6]/div[2]/a").click()
 
+# Verifica se há boletos. Se não houver, retorna uma mensagem de erro.
 # try:
 
 
